@@ -114,11 +114,23 @@
     <Compile Include="FormDanToc.Designer.cs">
       <DependentUpon>FormDanToc.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormPhongBan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPhongBan.Designer.cs">
+      <DependentUpon>FormPhongBan.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormTonGiao.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormTonGiao.Designer.cs">
       <DependentUpon>FormTonGiao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormTrinhDo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTrinhDo.Designer.cs">
+      <DependentUpon>FormTrinhDo.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -126,13 +138,20 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MySQLConnector.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormDanToc.resx">
       <DependentUpon>FormDanToc.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormPhongBan.resx">
+      <DependentUpon>FormPhongBan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormTonGiao.resx">
       <DependentUpon>FormTonGiao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTrinhDo.resx">
+      <DependentUpon>FormTrinhDo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

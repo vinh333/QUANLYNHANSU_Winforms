@@ -6,17 +6,18 @@ using System.Windows.Forms;
 
 namespace QLNHANSU
 {
-    public partial class FormDanToc : DevExpress.XtraEditors.XtraForm
+    public partial class FormPhongBan : DevExpress.XtraEditors.XtraForm
     {
         private MySQLConnector mySQLConnector;
         private bool checkbutton = false;
-        public FormDanToc()
+
+        public FormPhongBan()
         {
             InitializeComponent();
             mySQLConnector = new MySQLConnector();
         }
 
-        private void FormDanToc_Load(object sender, EventArgs e)
+        private void FormPhongBan_Load(object sender, EventArgs e)
         {
             _showHide(true);
             LoadData();
@@ -26,7 +27,7 @@ namespace QLNHANSU
         {
             try
             {
-                string query = "SELECT * FROM DANTOC";
+                string query = "SELECT * FROM PHONGBAN"; // Thay đổi từ DANTOC thành PHONGBAN
                 DataTable dataTable = mySQLConnector.Select(query);
                 gridControl1.DataSource = dataTable;
             }
@@ -47,7 +48,7 @@ namespace QLNHANSU
             btnThoat.Enabled = kt;
             btnIn.Enabled = kt;
 
-            txtTenDanToc.Enabled = !kt;
+            txtTenPhongBan.Enabled = !kt; // Đổi tên control txtTenDanToc thành txtTenPhongBan
         }
 
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -67,9 +68,9 @@ namespace QLNHANSU
             }
 
             DataRow row = gridView1.GetDataRow(rowIndex);
-            int idDanToc = Convert.ToInt32(row["IDDT"]);
-            string tenDanToc = row["TENDANTOC"].ToString();
-            txtTenDanToc.Text = tenDanToc;
+            int idPhongBan = Convert.ToInt32(row["IDPB"]);
+            string tenPhongBan = row["TENPB"].ToString(); // Thay đổi từ TENDANTOC thành TENPHONGBAN
+            txtTenPhongBan.Text = tenPhongBan; // Đổi tên control txtTenDanToc thành txtTenPhongBan
             checkbutton = false;
             _showHide(false);
         }
@@ -86,8 +87,8 @@ namespace QLNHANSU
             if (MessageBox.Show("Bạn có chắc chắn muốn xóa dòng này?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 DataRow row = gridView1.GetDataRow(rowIndex);
-                int idDanToc = Convert.ToInt32(row["IDDT"]);
-                string query = $"DELETE FROM DANTOC WHERE IDDT = {idDanToc}";
+                int idPhongBan = Convert.ToInt32(row["IDPB"]);
+                string query = $"DELETE FROM PHONGBAN WHERE IDPB = {idPhongBan}"; // Thay đổi từ DANTOC thành PHONGBAN
                 mySQLConnector.ExecuteQuery(query);
                 LoadData();
             }
@@ -98,20 +99,20 @@ namespace QLNHANSU
             try
             {
                 int rowIndex = gridView1.FocusedRowHandle;
-                if (checkbutton )
+                if (checkbutton)
                 {
                     // Thêm mới
-                    string tenDanToc = txtTenDanToc.Text.Trim();
-                    string query = $"INSERT INTO DANTOC (TENDANTOC) VALUES ('{tenDanToc}')";
+                    string tenPhongBan = txtTenPhongBan.Text.Trim(); // Đổi tên biến tenDanToc thành tenPhongBan
+                    string query = $"INSERT INTO PHONGBAN (TENPB) VALUES ('{tenPhongBan}')"; // Thay đổi từ DANTOC thành PHONGBAN
                     mySQLConnector.ExecuteQuery(query);
                 }
                 else
                 {
                     // Sửa
                     DataRow row = gridView1.GetDataRow(rowIndex);
-                    int idDanToc = Convert.ToInt32(row["IDDT"]);
-                    string tenDanToc = txtTenDanToc.Text.Trim();
-                    string query = $"UPDATE DANTOC SET TENDANTOC = '{tenDanToc}' WHERE IDDT = {idDanToc}";
+                    int idPhongBan = Convert.ToInt32(row["IDPB"]);
+                    string tenPhongBan = txtTenPhongBan.Text.Trim(); // Đổi tên biến tenDanToc thành tenPhongBan
+                    string query = $"UPDATE PHONGBAN SET TENPB = '{tenPhongBan}' WHERE IDPB = {idPhongBan}"; // Thay đổi từ DANTOC thành PHONGBAN
                     mySQLConnector.ExecuteQuery(query);
                 }
 
@@ -136,7 +137,7 @@ namespace QLNHANSU
 
         private void ClearInputs()
         {
-            txtTenDanToc.Text = "";
+            txtTenPhongBan.Text = ""; // Đổi tên control txtTenDanToc thành txtTenPhongBan
         }
     }
 }

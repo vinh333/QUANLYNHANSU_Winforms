@@ -45,5 +45,16 @@ namespace QLNHANSU
             openform(typeof(FormTonGiao));
         }
 
+        private void btnTrinhDo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            openform(typeof(FormTrinhDo));
+
+        }
+
+        private void btnPhongBan_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            openform(typeof(FormPhongBan));
+
+        }
     }
 }
