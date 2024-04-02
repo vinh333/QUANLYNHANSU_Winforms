@@ -56,5 +56,17 @@ namespace QLNHANSU
             openform(typeof(FormPhongBan));
 
         }
+
+        private void btnChucVu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            openform(typeof(FormChucVu));
+
+        }
+
+        private void btnBoPhan_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            openform(typeof(FormBoPhan));
+
+        }
     }
 }

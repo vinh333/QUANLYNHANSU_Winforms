@@ -20,6 +20,8 @@ namespace QLNHANSU
         private void FormPhongBan_Load(object sender, EventArgs e)
         {
             _showHide(true);
+            gridView1.OptionsBehavior.Editable = false; // Chặn chỉnh sửa trực tiếp
+
             LoadData();
         }
 

@@ -6,22 +6,21 @@ using System.Windows.Forms;
 
 namespace QLNHANSU
 {
-    public partial class FormTrinhDo : DevExpress.XtraEditors.XtraForm
+    public partial class FormChucVu : DevExpress.XtraEditors.XtraForm
     {
         private MySQLConnector mySQLConnector;
         private bool checkbutton = false;
-
-        public FormTrinhDo()
+        public FormChucVu()
         {
             InitializeComponent();
             mySQLConnector = new MySQLConnector();
         }
 
-        private void FormTrinhDo_Load(object sender, EventArgs e)
+        private void FormChucVu_Load(object sender, EventArgs e)
         {
-            _showHide(true);
             gridView1.OptionsBehavior.Editable = false; // Chặn chỉnh sửa trực tiếp
 
+            _showHide(true);
             LoadData();
         }
 
@@ -29,7 +28,7 @@ namespace QLNHANSU
         {
             try
             {
-                string query = "SELECT * FROM TRINHDO"; // Thay đổi từ TONGIAO thành TRINHDO
+                string query = "SELECT * FROM CHUCVU";
                 DataTable dataTable = mySQLConnector.Select(query);
                 gridControl1.DataSource = dataTable;
             }
@@ -50,7 +49,7 @@ namespace QLNHANSU
             btnThoat.Enabled = kt;
             btnIn.Enabled = kt;
 
-            txtTenTrinhDo.Enabled = !kt; // Đổi tên control txtTenTonGiao thành txtTenTrinhDo
+            txtTenChucVu.Enabled = !kt;
         }
 
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -70,9 +69,9 @@ namespace QLNHANSU
             }
 
             DataRow row = gridView1.GetDataRow(rowIndex);
-            int idTrinhDo = Convert.ToInt32(row["IDTD"]);
-            string tenTrinhDo = row["TENTD"].ToString(); // Thay đổi từ TENTONGIAO thành TENTRINHDO
-            txtTenTrinhDo.Text = tenTrinhDo; // Đổi tên control txtTenTonGiao thành txtTenTrinhDo
+            int idChucVu = Convert.ToInt32(row["IDCV"]);
+            string tenChucVu = row["TENCV"].ToString();
+            txtTenChucVu.Text = tenChucVu;
             checkbutton = false;
             _showHide(false);
         }
@@ -89,8 +88,8 @@ namespace QLNHANSU
             if (MessageBox.Show("Bạn có chắc chắn muốn xóa dòng này?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 DataRow row = gridView1.GetDataRow(rowIndex);
-                int idTrinhDo = Convert.ToInt32(row["IDTD"]);
-                string query = $"DELETE FROM TRINHDO WHERE IDTD = {idTrinhDo}"; // Thay đổi từ TONGIAO thành TRINHDO
+                int idChucVu = Convert.ToInt32(row["IDCV"]);
+                string query = $"DELETE FROM CHUCVU WHERE IDCV = {idChucVu}";
                 mySQLConnector.ExecuteQuery(query);
                 LoadData();
             }
@@ -104,17 +103,17 @@ namespace QLNHANSU
                 if (checkbutton)
                 {
                     // Thêm mới
-                    string tenTrinhDo = txtTenTrinhDo.Text.Trim(); // Đổi tên biến tenTonGiao thành tenTrinhDo
-                    string query = $"INSERT INTO TRINHDO (TENTD) VALUES ('{tenTrinhDo}')"; // Thay đổi từ TONGIAO thành TRINHDO
+                    string tenChucVu = txtTenChucVu.Text.Trim();
+                    string query = $"INSERT INTO CHUCVU (TENCV) VALUES ('{tenChucVu}')";
                     mySQLConnector.ExecuteQuery(query);
                 }
                 else
                 {
                     // Sửa
                     DataRow row = gridView1.GetDataRow(rowIndex);
-                    int idTrinhDo = Convert.ToInt32(row["IDTD"]);
-                    string tenTrinhDo = txtTenTrinhDo.Text.Trim(); // Đổi tên biến tenTonGiao thành tenTrinhDo
-                    string query = $"UPDATE TRINHDO SET TENTD = '{tenTrinhDo}' WHERE IDTD = {idTrinhDo}"; // Thay đổi từ TONGIAO thành TRINHDO
+                    int idChucVu = Convert.ToInt32(row["IDCV"]);
+                    string tenChucVu = txtTenChucVu.Text.Trim();
+                    string query = $"UPDATE CHUCVU SET TENCV = '{tenChucVu}' WHERE IDCV = {idChucVu}";
                     mySQLConnector.ExecuteQuery(query);
                 }
 
@@ -139,7 +138,7 @@ namespace QLNHANSU
 
         private void ClearInputs()
         {
-            txtTenTrinhDo.Text = ""; // Đổi tên control txtTenTonGiao thành txtTenTrinhDo
+            txtTenChucVu.Text = "";
         }
     }
 }

@@ -108,6 +108,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormBoPhan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormBoPhan.Designer.cs">
+      <DependentUpon>FormBoPhan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormChucVu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormChucVu.Designer.cs">
+      <DependentUpon>FormChucVu.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormDanToc.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -141,6 +153,12 @@
     <Compile Include="MySQLConnector.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormBoPhan.resx">
+      <DependentUpon>FormBoPhan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormChucVu.resx">
+      <DependentUpon>FormChucVu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormDanToc.resx">
       <DependentUpon>FormDanToc.cs</DependentUpon>
     </EmbeddedResource>

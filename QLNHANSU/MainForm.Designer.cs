@@ -52,6 +52,9 @@
             this.barButtonItem22 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem23 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem24 = new DevExpress.XtraBars.BarButtonItem();
+            this.btnCongTy = new DevExpress.XtraBars.BarButtonItem();
+            this.btnBoPhan = new DevExpress.XtraBars.BarButtonItem();
+            this.btnChucVu = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -99,10 +102,13 @@
             this.barButtonItem21,
             this.barButtonItem22,
             this.barButtonItem23,
-            this.barButtonItem24});
+            this.barButtonItem24,
+            this.btnCongTy,
+            this.btnBoPhan,
+            this.btnChucVu});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.Margin = new System.Windows.Forms.Padding(4);
-            this.ribbonControl1.MaxItemId = 22;
+            this.ribbonControl1.MaxItemId = 25;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.OptionsMenuMinWidth = 385;
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -270,6 +276,28 @@
             this.barButtonItem24.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem24.ImageOptions.SvgImage")));
             this.barButtonItem24.Name = "barButtonItem24";
             // 
+            // btnCongTy
+            // 
+            this.btnCongTy.Caption = "Công ty";
+            this.btnCongTy.Id = 22;
+            this.btnCongTy.Name = "btnCongTy";
+            // 
+            // btnBoPhan
+            // 
+            this.btnBoPhan.Caption = "Bộ phận";
+            this.btnBoPhan.Id = 23;
+            this.btnBoPhan.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnBoPhan.ImageOptions.SvgImage")));
+            this.btnBoPhan.Name = "btnBoPhan";
+            this.btnBoPhan.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBoPhan_ItemClick);
+            // 
+            // btnChucVu
+            // 
+            this.btnChucVu.Caption = "Chức vụ";
+            this.btnChucVu.Id = 24;
+            this.btnChucVu.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnChucVu.ImageOptions.SvgImage")));
+            this.btnChucVu.Name = "btnChucVu";
+            this.btnChucVu.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnChucVu_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -300,6 +328,8 @@
             this.ribbonPageGroup2.ItemLinks.Add(this.btnTrinhDo, true);
             this.ribbonPageGroup2.ItemLinks.Add(this.btnPhongBan);
             this.ribbonPageGroup2.ItemLinks.Add(this.btnNhanVien);
+            this.ribbonPageGroup2.ItemLinks.Add(this.btnBoPhan);
+            this.ribbonPageGroup2.ItemLinks.Add(this.btnChucVu);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             this.ribbonPageGroup2.Text = "Danh mục chung";
             // 
@@ -388,7 +418,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
             this.Ribbon = this.ribbonControl1;
-            this.Text = "Form1";
+            this.Text = "PHẦN MỀN QUẢN LÝ NHÂN VIÊN TẬP ĐOÀN EGROUP";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FormMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
@@ -438,6 +468,9 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem24;
         private DevExpress.XtraBars.Docking2010.DocumentManager documentManager1;
         private DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView tabbedView1;
+        private DevExpress.XtraBars.BarButtonItem btnCongTy;
+        private DevExpress.XtraBars.BarButtonItem btnBoPhan;
+        private DevExpress.XtraBars.BarButtonItem btnChucVu;
     }
 }
 
