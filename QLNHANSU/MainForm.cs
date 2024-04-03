@@ -68,5 +68,11 @@ namespace QLNHANSU
             openform(typeof(FormBoPhan));
 
         }
+
+        private void btnNhanVien_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            openform(typeof(FormNhanVien));
+
+        }
     }
 }

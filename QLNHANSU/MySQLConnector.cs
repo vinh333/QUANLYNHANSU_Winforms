@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Data;
+using System.Windows.Forms;
 
 namespace QLNHANSU
 {
@@ -67,6 +68,8 @@ namespace QLNHANSU
             return dataTable;
         }
 
+        
+
         public void ExecuteQuery(string query)
         {
             if (this.OpenConnection())
@@ -76,5 +79,35 @@ namespace QLNHANSU
                 this.CloseConnection();
             }
         }
+
+        internal object ExecuteScalar(string query)
+        {
+            object result = null;
+            try
+            {
+                if (connection.State == ConnectionState.Closed)
+                {
+                    connection.Open();
+                }
+                MySqlCommand command = new MySqlCommand(query, connection);
+                result = command.ExecuteScalar();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi thực thi truy vấn: {ex.Message}");
+            }
+            finally
+            {
+                if (connection.State == ConnectionState.Open)
+                {
+                    connection.Close();
+                }
+            }
+
+            return result;
+        }
+
+
+
     }
 }
