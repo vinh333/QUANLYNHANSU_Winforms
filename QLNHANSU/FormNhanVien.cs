@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using System.Windows.Forms;
 using static Mysqlx.Datatypes.Scalar.Types;
 
 namespace QLNHANSU
@@ -94,7 +95,7 @@ namespace QLNHANSU
         {
             try
             {
-                string query = "SELECT * FROM nhanvien";
+                string query = "SELECT nv.MANV, nv.HOTEN, nv.GIOITINH, nv.NGAYSINH,nv.CCCD, nv.DIENTHOAI, nv.DIACHI, nv.HINHANH, bp.TENBP, cv.TENCV, dt.TENDANTOC, tg.TENTONGIAO, pb.TENPB, td.TENTD FROM nhanvien nv LEFT JOIN bophan bp ON nv.IDBP = bp.IDBP LEFT JOIN chucvu cv ON nv.IDCV = cv.IDCV LEFT JOIN dantoc dt ON nv.IDDT = dt.IDDT LEFT JOIN tongiao tg ON nv.IDTG = tg.IDTG LEFT JOIN phongban pb ON nv.IDPB = pb.IDPB LEFT JOIN trinhdo td ON nv.IDTD = td.IDTD WHERE 1;";
                 DataTable dataTable = mySQLConnector.Select(query);
                 gridControl1.DataSource = dataTable;
             }
@@ -136,7 +137,7 @@ namespace QLNHANSU
             }
 
             DataRow row = gridView1.GetDataRow(rowIndex);
-            int maNV = Convert.ToInt32(row["MANV"]);
+             int maNV = Convert.ToInt32(row["MANV"]);
             string hoTen = row["HOTEN"].ToString();
             string gioiTinh = row["GIOITINH"].ToString();
             DateTime ngaySinh = Convert.ToDateTime(row["NGAYSINH"]);
@@ -145,12 +146,31 @@ namespace QLNHANSU
             string diaChi = row["DIACHI"].ToString();
             byte[] hinhAnh = (byte[])row["HINHANH"]; // Đọc hình ảnh từ cột HINHANH
 
+            string idBoPhan = row["TENBP"].ToString(); // Lấy ID bộ phận
+            string idChucVu = row["TENCV"].ToString(); // Lấy ID chức vụ
+            string idDanToc = row["TENDANTOC"].ToString(); // Lấy ID dân tộc
+            string idPhongBan = row["TENPB"].ToString(); // Lấy ID phòng ban
+            string idTonGiao = row["TENTONGIAO"].ToString(); // Lấy ID tôn giáo
+            string idTrinhDo = row["TENTD"].ToString(); // Lấy ID trình độ
+
             txtHoTen.Text = hoTen;
             chkGioiTinh.Checked = gioiTinh == "True";
             dtpNgaySinh.Value = ngaySinh;
             txt_SoDienThoai.Text = sdt;
             txtCCCD.Text = cccd;
             txt_DiaChi.Text = diaChi;
+
+            // Chọn các ComboBox tương ứng với ID
+            // Chọn các ComboBox tương ứng với ID
+            // Chọn các ComboBox tương ứng với ID
+            SelectComboBoxItem(cbo_BoPhan, idBoPhan);
+            SelectComboBoxItem(cbo_ChucVu, idChucVu);
+            SelectComboBoxItem(cbo_DanToc, idDanToc);
+            SelectComboBoxItem(cbo_PhongBan, idPhongBan);
+            SelectComboBoxItem(cbo_TonGiao, idTonGiao);
+            SelectComboBoxItem(cbo_TrinhDo, idTrinhDo);
+
+
             // Hiển thị hình ảnh lên pictureBox
             if (hinhAnh != null)
             {
@@ -215,7 +235,7 @@ namespace QLNHANSU
                     DataRow row = gridView1.GetDataRow(rowIndex);
                     int maNV = Convert.ToInt32(row["MANV"]);
                     string query = $"UPDATE nhanvien SET HOTEN = '{hoTen}', GIOITINH = {gioiTinh}, NGAYSINH = '{ngaySinh.ToString("yyyy-MM-dd")}', " +
-                                   $"DIENTHOAI = '{sdt}', CCCD = '{cccd}', DIACHI = '{diaChi}', HINHANH = '{hinhAnh}', IDBP = {idBoPhan}, IDCV = {idChucVu}, " +
+                                   $"DIENTHOAI = '{sdt}', CCCD = '{cccd}', DIACHI = '{diaChi}', HINHANH = {hinhAnh}, IDBP = {idBoPhan}, IDCV = {idChucVu}, " +
                                    $"IDDT = {idDanToc}, IDPB = {idPhongBan}, IDTG = {idTonGiao}, IDTD = {idTrinhDo} WHERE MANV = {maNV}";
                     mySQLConnector.ExecuteQuery(query);
                 }
@@ -313,6 +333,44 @@ namespace QLNHANSU
 
             return id;
         }
+
+        private string GetTenById(string id, string tableName, string columnName, string idColumnName)
+        {
+            string ten = ""; // Giá trị mặc định nếu không tìm thấy tên
+
+            try
+            {
+                string query = $"SELECT {columnName} FROM {tableName} WHERE {idColumnName} = {id}";
+                object result = mySQLConnector.ExecuteScalar(query);
+                if (result != null && result != DBNull.Value)
+                {
+                    ten = Convert.ToString(result);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi lấy tên từ bảng {tableName}: {ex.Message}");
+            }
+
+            return ten;
+        }
+        // Hàm chọn item trong ComboBox theo ID
+        // Hàm chọn item trong ComboBox theo ID
+        // Hàm chọn item trong ComboBox theo ID
+        private void SelectComboBoxItem(System.Windows.Forms.ComboBox comboBox, string id)
+        {
+            foreach (var item in comboBox.Items)
+            {
+                // Kiểm tra ID của mỗi item trong ComboBox
+                // Nếu tìm thấy ID tương ứng, chọn item đó
+                if (comboBox.GetItemText(item) == id)
+                {
+                    comboBox.SelectedItem = item;
+                    break;
+                }
+            }
+        }
+
 
 
 
