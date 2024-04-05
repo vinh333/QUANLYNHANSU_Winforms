@@ -161,8 +161,7 @@ namespace QLNHANSU
             txt_DiaChi.Text = diaChi;
 
             // Chọn các ComboBox tương ứng với ID
-            // Chọn các ComboBox tương ứng với ID
-            // Chọn các ComboBox tương ứng với ID
+           
             SelectComboBoxItem(cbo_BoPhan, idBoPhan);
             SelectComboBoxItem(cbo_ChucVu, idChucVu);
             SelectComboBoxItem(cbo_DanToc, idDanToc);

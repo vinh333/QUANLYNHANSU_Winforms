@@ -120,6 +120,12 @@
     <Compile Include="FormChucVu.Designer.cs">
       <DependentUpon>FormChucVu.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormDangNhap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDangNhap.Designer.cs">
+      <DependentUpon>FormDangNhap.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormDanToc.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -165,6 +171,9 @@
     <EmbeddedResource Include="FormChucVu.resx">
       <DependentUpon>FormChucVu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormDangNhap.resx">
+      <DependentUpon>FormDangNhap.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormDanToc.resx">
       <DependentUpon>FormDanToc.cs</DependentUpon>
     </EmbeddedResource>
@@ -208,6 +217,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\No_Image_Available.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-key-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-user-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logo-Egroup.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Smaller Network Connection Background.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Egroup.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
