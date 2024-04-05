@@ -50,15 +50,22 @@ namespace QLNHANSU
             if (result != null && Convert.ToInt32(result) > 0)
             {
                 XtraMessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                // Sau khi đăng nhập thành công, bạn có thể mở form chính hoặc thực hiện hành động mong muốn ở đây.
-                // Ví dụ: FormMain formMain = new FormMain();
-                // formMain.Show();
+
+                // Đóng form đăng nhập
+                this.Hide();
+
+                // Mở MainForm
+                MainForm formMain = new MainForm();
+                formMain.Closed += (s, args) => this.Close(); // Đóng form đăng nhập khi MainForm đóng
+                formMain.Show();
             }
             else
             {
                 XtraMessageBox.Show("Tên người dùng hoặc mật khẩu không đúng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
 
         private void btnThoat_Click(object sender, EventArgs e)
         {

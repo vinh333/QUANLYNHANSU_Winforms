@@ -38,13 +38,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txt_PassWord = new DevExpress.XtraEditors.TextEdit();
             this.txt_UserName = new DevExpress.XtraEditors.TextEdit();
+            this.txt_PassWord = new DevExpress.XtraEditors.TextEdit();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txt_PassWord.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_UserName.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_PassWord.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_Login
@@ -55,7 +55,7 @@
             this.btn_Login.Location = new System.Drawing.Point(193, 380);
             this.btn_Login.Name = "btn_Login";
             this.btn_Login.Size = new System.Drawing.Size(120, 48);
-            this.btn_Login.TabIndex = 22;
+            this.btn_Login.TabIndex = 2;
             this.btn_Login.Text = "Đăng nhập";
             this.btn_Login.UseVisualStyleBackColor = false;
             this.btn_Login.Click += new System.EventHandler(this.btnDangNhap_Click);
@@ -146,6 +146,24 @@
             this.panel1.Size = new System.Drawing.Size(365, 259);
             this.panel1.TabIndex = 28;
             // 
+            // txt_UserName
+            // 
+            this.txt_UserName.Location = new System.Drawing.Point(89, 79);
+            this.txt_UserName.Name = "txt_UserName";
+            this.txt_UserName.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txt_UserName.Properties.Appearance.Options.UseFont = true;
+            this.txt_UserName.Size = new System.Drawing.Size(225, 28);
+            this.txt_UserName.TabIndex = 0;
+            // 
+            // txt_PassWord
+            // 
+            this.txt_PassWord.Location = new System.Drawing.Point(91, 159);
+            this.txt_PassWord.Name = "txt_PassWord";
+            this.txt_PassWord.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txt_PassWord.Properties.Appearance.Options.UseFont = true;
+            this.txt_PassWord.Size = new System.Drawing.Size(225, 28);
+            this.txt_PassWord.TabIndex = 1;
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -156,24 +174,6 @@
             this.label4.Size = new System.Drawing.Size(121, 16);
             this.label4.TabIndex = 29;
             this.label4.Text = "Vertion 1.1.0 | VInh";
-            // 
-            // txt_PassWord
-            // 
-            this.txt_PassWord.Location = new System.Drawing.Point(91, 159);
-            this.txt_PassWord.Name = "txt_PassWord";
-            this.txt_PassWord.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txt_PassWord.Properties.Appearance.Options.UseFont = true;
-            this.txt_PassWord.Size = new System.Drawing.Size(225, 28);
-            this.txt_PassWord.TabIndex = 30;
-            // 
-            // txt_UserName
-            // 
-            this.txt_UserName.Location = new System.Drawing.Point(89, 79);
-            this.txt_UserName.Name = "txt_UserName";
-            this.txt_UserName.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txt_UserName.Properties.Appearance.Options.UseFont = true;
-            this.txt_UserName.Size = new System.Drawing.Size(225, 28);
-            this.txt_UserName.TabIndex = 31;
             // 
             // FormDangNhap
             // 
@@ -193,8 +193,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txt_PassWord.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_UserName.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_PassWord.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
