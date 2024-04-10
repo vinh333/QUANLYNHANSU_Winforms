@@ -14,6 +14,8 @@ namespace QLNHANSU
         private int port = 3306;
         private MySqlConnection connection;
 
+        public MySqlConnection Connection { get; internal set; }
+
         public MySQLConnector()
         {
             Initialize();

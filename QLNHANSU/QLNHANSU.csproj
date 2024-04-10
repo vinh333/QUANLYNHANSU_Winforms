@@ -47,6 +47,7 @@
     <Reference Include="DevExpress.XtraGrid.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraPrinting.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraWizard.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="Google.Protobuf, Version=3.25.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Protobuf.3.25.1\lib\net45\Google.Protobuf.dll</HintPath>
     </Reference>
@@ -108,11 +109,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CHAMCONG\FormBangCongChiTiet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CHAMCONG\FormBangCongChiTiet.Designer.cs">
+      <DependentUpon>FormBangCongChiTiet.cs</DependentUpon>
+    </Compile>
     <Compile Include="CHAMCONG\FormLoaiCa.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CHAMCONG\FormLoaiCa.Designer.cs">
       <DependentUpon>FormLoaiCa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CHAMCONG\FormBangCong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CHAMCONG\FormBangCong.Designer.cs">
+      <DependentUpon>FormBangCong.cs</DependentUpon>
     </Compile>
     <Compile Include="FormBoPhan.cs">
       <SubType>Form</SubType>
@@ -137,6 +150,12 @@
     </Compile>
     <Compile Include="FormDanToc.Designer.cs">
       <DependentUpon>FormDanToc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CHAMCONG\FormLoaiCong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CHAMCONG\FormLoaiCong.Designer.cs">
+      <DependentUpon>FormLoaiCong.cs</DependentUpon>
     </Compile>
     <Compile Include="FormNhanVien.cs">
       <SubType>Form</SubType>
@@ -177,8 +196,14 @@
     <Compile Include="MySQLConnector.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CHAMCONG\FormBangCongChiTiet.resx">
+      <DependentUpon>FormBangCongChiTiet.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CHAMCONG\FormLoaiCa.resx">
       <DependentUpon>FormLoaiCa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CHAMCONG\FormBangCong.resx">
+      <DependentUpon>FormBangCong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormBoPhan.resx">
       <DependentUpon>FormBoPhan.cs</DependentUpon>
@@ -191,6 +216,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormDanToc.resx">
       <DependentUpon>FormDanToc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CHAMCONG\FormLoaiCong.resx">
+      <DependentUpon>FormLoaiCong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormNhanVien.resx">
       <DependentUpon>FormNhanVien.cs</DependentUpon>

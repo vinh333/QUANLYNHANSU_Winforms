@@ -79,5 +79,15 @@ namespace QLNHANSU
         {
             openform(typeof(FormLoaiCa));
         }
+
+        private void btnLoaiCong_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            openform(typeof(FormLoaiCong));
+        }
+
+        private void btnBangCong_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            openform(typeof(FormBangCong));
+        }
     }
 }
