@@ -75,14 +75,31 @@ namespace QLNHANSU.CHAMCONG
         {
             List<NhanVien> lstNV = new List<NhanVien>();
 
-            // Replace this code with your actual data retrieval logic
-            // For demonstration purposes, a hardcoded list is provided here
-            lstNV.Add(new NhanVien { IDNV = 2, HOTEN = "Employee 1" });
-            lstNV.Add(new NhanVien { IDNV = 13, HOTEN = "Employee 2" });
-      
+            // Tạo câu truy vấn SQL
+            string query = "SELECT * FROM nhanvien";
+
+            // Thực thi truy vấn và lấy dữ liệu từ cơ sở dữ liệu
+            DataTable dataTable = mySQLConnector.Select(query);
+
+            // Kiểm tra xem truy vấn có thành công hay không
+            if (dataTable != null && dataTable.Rows.Count > 0)
+            {
+                // Duyệt qua từng dòng dữ liệu
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    // Đọc giá trị từ cột IDNV và HOTEN
+                    int id = Convert.ToInt32(row["MANV"]);
+                    string name = row["HOTEN"].ToString();
+
+                    // Tạo đối tượng NhanVien và thêm vào danh sách
+                    lstNV.Add(new NhanVien { IDNV = id, HOTEN = name });
+                }
+            }
 
             return lstNV;
         }
+
+
 
         private int GetDayNumber(int thang, int nam)
         {
