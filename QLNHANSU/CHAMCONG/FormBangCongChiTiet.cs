@@ -37,9 +37,10 @@ namespace QLNHANSU.CHAMCONG
         }
         private void FormKyCong_Load(object sender, EventArgs e)
         {
-            gridView1.OptionsBehavior.Editable = false; // Chặn chỉnh sửa trực tiếp
+            //gridView1.OptionsBehavior.Editable = false; // Chặn chỉnh sửa trực tiếp
             cb_Thang.Text = _thang.ToString();
             cb_Nam.Text = _nam.ToString();
+            gridView1.CellValueChanged += gridView1_CellValueChanged;
             LoadData();
         }
 
@@ -50,6 +51,7 @@ namespace QLNHANSU.CHAMCONG
 
 
             loadBangCongChiTiet(result);
+            CustomView(int.Parse(cb_Thang.Text) , int.Parse(cb_Nam.Text));
             //phatSinhKyCongChiTiet(4, 2024);
         }
         public void phatSinhKyCongChiTiet(int thang, int nam)
@@ -191,11 +193,13 @@ namespace QLNHANSU.CHAMCONG
             this.Close();
         }
 
-        /*private void CustomView(int thang, int nam)
+        private void CustomView(int thang, int nam)
         {
-            gvBangCongChiTiet.RestoreLayoutFromXml(Application.StartupPath + @"\BangCong_Layout.xml");
-            int i;
-            foreach (GridColumn gridColumn in gvBangCongChiTiet.Columns)
+            gridView1.RestoreLayoutFromXml(Application.StartupPath + @"\BangCong_Layout.xml");
+
+            string[] dayHeaders = { "CN", "T.Hai", "T.Ba", "T.Tư", "T.Năm", "T.Sáu", "T.Bảy" };
+
+            foreach (GridColumn gridColumn in gridView1.Columns)
             {
                 if (gridColumn.FieldName == "HOTEN") continue;
 
@@ -205,120 +209,75 @@ namespace QLNHANSU.CHAMCONG
                 gridColumn.ColumnEdit = textEdit;
             }
 
-            for (i = 1; i <= GetDayNumber(thang, nam); i++)
+            int dayNumber = GetDayNumber(thang, nam);
+
+            for (int i = 1; i <= dayNumber; i++)
             {
                 DateTime newDate = new DateTime(nam, thang, i);
 
-                GridColumn column = new GridColumn();
+                GridColumn column = gridView1.Columns["D" + i];
                 column.AppearanceHeader.Font = new Font("Tahoma", 8, FontStyle.Regular);
-                string fieldName = "D" + i;
-                switch (newDate.DayOfWeek.ToString())
+                int dayIndex = (int)newDate.DayOfWeek;
+
+                column.Caption = $"{dayHeaders[dayIndex]} {Environment.NewLine} {i}";
+
+                if (dayIndex == (int)DayOfWeek.Saturday)
                 {
-                    case "Monday":
-                        column = gvBangCongChiTiet.Columns[fieldName];
-                        column.Caption = "T.Hai " + Environment.NewLine + i;
-                        column.OptionsColumn.AllowEdit = true;
-                        column.AppearanceHeader.ForeColor = Color.Blue;
-                        column.AppearanceHeader.BackColor = Color.Transparent;
-                        column.AppearanceHeader.BackColor2 = Color.Transparent;
-                        column.AppearanceCell.ForeColor = Color.Black;
-                        column.AppearanceCell.BackColor = Color.Transparent;
-                        column.OptionsColumn.AllowFocus = true;
-                        //column.Width = 30;
-                        //column.AppearanceHeader.Font = new Font("Tahoma", 8, FontStyle.Regular);
-                        break;
-
-                    case "Tuesday":
-                        column = gvBangCongChiTiet.Columns[fieldName];
-                        column.Caption = "T.Ba " + Environment.NewLine + i;
-                        column.OptionsColumn.AllowEdit = true;
-                        column.AppearanceHeader.ForeColor = Color.Blue;
-                        column.AppearanceHeader.BackColor = Color.Transparent;
-                        column.AppearanceHeader.BackColor2 = Color.Transparent;
-                        column.AppearanceCell.ForeColor = Color.Black;
-                        column.AppearanceCell.BackColor = Color.Transparent;
-                        column.OptionsColumn.AllowFocus = true;
-                        //column.AppearanceHeader.Font = new Font("Tahoma", 8, FontStyle.Regular);
-                        //column.Width = 30;
-                        break;
-
-                    case "Wednesday":
-                        column = gvBangCongChiTiet.Columns[fieldName];
-                        column.Caption = "T.Tư " + Environment.NewLine + i;
-                        column.OptionsColumn.AllowEdit = true;
-                        column.AppearanceHeader.ForeColor = Color.Blue;
-                        column.AppearanceHeader.BackColor = Color.Transparent;
-                        column.AppearanceHeader.BackColor2 = Color.Transparent;
-                        column.AppearanceCell.ForeColor = Color.Black;
-                        column.AppearanceCell.BackColor = Color.Transparent;
-                        column.OptionsColumn.AllowFocus = true;
-                        //column.AppearanceHeader.Font = new Font("Tahoma", 8, FontStyle.Regular);
-                        //column.Width = 30;
-                        break;
-                    case "Thursday":
-                        column = gvBangCongChiTiet.Columns[fieldName];
-                        column.Caption = "T.Năm " + Environment.NewLine + i;
-                        column.OptionsColumn.AllowEdit = true;
-                        column.AppearanceHeader.ForeColor = Color.Blue;
-                        column.AppearanceHeader.BackColor = Color.Transparent;
-                        column.AppearanceHeader.BackColor2 = Color.Transparent;
-                        column.AppearanceCell.ForeColor = Color.Black;
-                        column.AppearanceCell.BackColor = Color.Transparent;
-                        column.OptionsColumn.AllowFocus = true;
-                        //column.AppearanceHeader.Font = new Font("Tahoma", 8, FontStyle.Regular);
-                        //column.Width = 30;
-                        break;
-                    case "Friday":
-                        column = gvBangCongChiTiet.Columns[fieldName];
-                        column.Caption = "T.Sáu " + Environment.NewLine + i;
-                        column.OptionsColumn.AllowEdit = true;
-                        column.AppearanceHeader.ForeColor = Color.Blue;
-                        column.AppearanceHeader.BackColor = Color.Transparent;
-                        column.AppearanceHeader.BackColor2 = Color.Transparent;
-                        column.AppearanceCell.ForeColor = Color.Black;
-                        column.AppearanceCell.BackColor = Color.Transparent;
-                        column.OptionsColumn.AllowFocus = true;
-                        //column.AppearanceHeader.Font = new Font("Tahoma", 8, FontStyle.Regular);
-                        //column.Width = 30;
-                        break;
-                    case "Saturday":
-                        column = gvBangCongChiTiet.Columns[fieldName];
-                        column.Caption = "T.Bảy " + Environment.NewLine + i;
-                        column.OptionsColumn.AllowEdit = true;
-                        column.AppearanceHeader.ForeColor = Color.Red;
-                        column.AppearanceHeader.BackColor = Color.Violet;
-                        column.AppearanceHeader.BackColor2 = Color.Violet;
-                        column.AppearanceCell.ForeColor = Color.Black;
-                        column.AppearanceCell.BackColor = Color.Khaki;
-                        column.OptionsColumn.AllowFocus = true;
-                        //column.AppearanceHeader.Font = new Font("Tahoma", 8, FontStyle.Regular);
-                        //column.Width = 30;
-                        break;
-                    case "Sunday":
-                        column = gvBangCongChiTiet.Columns[fieldName];
-                        column.Caption = "CN " + Environment.NewLine + i;
-                        column.OptionsColumn.AllowEdit = false;
-                        column.AppearanceHeader.ForeColor = Color.Red;
-                        column.AppearanceHeader.BackColor = Color.GreenYellow;
-                        column.AppearanceHeader.BackColor2 = Color.GreenYellow;
-                        column.AppearanceCell.ForeColor = Color.Black;
-                        column.AppearanceCell.BackColor = Color.Orange;
-                        //column.AppearanceHeader.Font = new Font("Tahoma", 8, FontStyle.Regular);
-                        //column.Width = 30;
-                        //column.OptionsColumn.AllowFocus = false;
-                        break;
+                    column.AppearanceHeader.ForeColor = Color.Red;
+                    column.AppearanceHeader.BackColor = Color.Violet;
+                    column.AppearanceHeader.BackColor2 = Color.Violet;
+                    column.AppearanceCell.BackColor = Color.Khaki;
                 }
+                else if (dayIndex == (int)DayOfWeek.Sunday)
+                {
+                    column.OptionsColumn.AllowEdit = false;
+                    column.AppearanceHeader.ForeColor = Color.Red;
+                    column.AppearanceHeader.BackColor = Color.GreenYellow;
+                    column.AppearanceHeader.BackColor2 = Color.GreenYellow;
+                    column.AppearanceCell.BackColor = Color.Orange;
+                }
+                else
+                {
+                    column.AppearanceHeader.ForeColor = Color.Blue;
+                    column.AppearanceHeader.BackColor = Color.Transparent;
+                    column.AppearanceHeader.BackColor2 = Color.Transparent;
+                    column.AppearanceCell.BackColor = Color.Transparent;
+                }
+
+                column.OptionsColumn.AllowEdit = (dayIndex != (int)DayOfWeek.Sunday);
+                column.OptionsColumn.AllowFocus = true;
             }
 
-            while (i <= 31)
+            for (int i = dayNumber + 2; i <= 31; i++)
             {
-                gvBangCongChiTiet.Columns[i + 1].Visible = false;
-                i++;
+                gridView1.Columns["D" + i].Visible = false;
             }
+        }
 
-        }*/
+        private void gridView1_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+            // Lấy giá trị cột và dòng hiện tại
+            int rowIndex = e.RowHandle;
+            int colIndex = e.Column.VisibleIndex;
+            string fieldName = $"D{colIndex -1}";
 
-        
+            // Lấy giá trị mới từ ô chỉnh sửa
+            string newValue = gridView1.GetRowCellValue(rowIndex, e.Column).ToString();
+
+            // Lấy khóa chính (primary key) của dòng hiện tại từ cột MAKYCONG
+            int makycong = Convert.ToInt32(gridView1.GetRowCellValue(rowIndex, "MAKYCONG"));
+            int manv = Convert.ToInt32(gridView1.GetRowCellValue(rowIndex, "MANV"));
+
+            // Xây dựng truy vấn SQL để cập nhật dữ liệu tương ứng trong cơ sở dữ liệu XAMPP
+            string query = $"UPDATE KYCONGCHITIET SET {fieldName} = '{newValue}' WHERE MAKYCONG = {makycong} AND MANV = {manv}";
+
+            // Thực thi truy vấn SQL
+            mySQLConnector.ExecuteQuery(query);
+        }
+
+
+
+
     }
 
     public class NhanVien
