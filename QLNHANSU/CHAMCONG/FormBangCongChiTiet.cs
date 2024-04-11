@@ -52,6 +52,7 @@ namespace QLNHANSU.CHAMCONG
 
             loadBangCongChiTiet(result);
             CustomView(int.Parse(cb_Thang.Text) , int.Parse(cb_Nam.Text));
+            UpdateDataToDatabase();
             //phatSinhKyCongChiTiet(4, 2024);
         }
         public void phatSinhKyCongChiTiet(int thang, int nam)
@@ -195,7 +196,7 @@ namespace QLNHANSU.CHAMCONG
 
         private void CustomView(int thang, int nam)
         {
-            gridView1.RestoreLayoutFromXml(Application.StartupPath + @"\BangCong_Layout.xml");
+           // gridView1.RestoreLayoutFromXml(Application.StartupPath + @"\BangCong_Layout.xml");
 
             string[] dayHeaders = { "CN", "T.Hai", "T.Ba", "T.Tư", "T.Năm", "T.Sáu", "T.Bảy" };
 
@@ -273,10 +274,59 @@ namespace QLNHANSU.CHAMCONG
 
             // Thực thi truy vấn SQL
             mySQLConnector.ExecuteQuery(query);
+
+            LoadData();
+            LoadData();
+
         }
 
 
 
+        private void UpdateDataToDatabase()
+        {
+            try
+            {
+                foreach (DataRow row in ((DataTable)gridControl1.DataSource).Rows)
+                {
+                    int workDays = 0;
+                    int leaveDays = 0;
+                    int nonLeaveDays = 0;
+
+                    for (int i = 1; i <= 31; i++)
+                    {
+                        string columnName = "D" + i;
+                        string cellValue = row[columnName].ToString();
+
+                        if (cellValue == "X")
+                        {
+                            workDays++;
+                        }
+                        else if (cellValue == "P")
+                        {
+                            leaveDays++;
+                        }
+                        else if (cellValue == "KP")
+                        {
+                            nonLeaveDays++;
+                        }
+                    }
+
+                    int makycong = Convert.ToInt32(row["MAKYCONG"]);
+                    int manv = Convert.ToInt32(row["MANV"]);
+
+                    string updateQuery = $"UPDATE KYCONGCHITIET SET NGAYCONG = {workDays}, NGAYPHEP = {leaveDays}, NGHIKHONGPHEP = {nonLeaveDays}, TONGNGAYCONG = {workDays + leaveDays } WHERE MAKYCONG = {makycong} AND MANV = {manv}";
+
+                    mySQLConnector.ExecuteQuery(updateQuery);
+
+                }
+
+                // Hiển thị thông báo hoặc cập nhật các điều khiển giao diện nếu cần
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi cập nhật dữ liệu lên cơ sở dữ liệu: " + ex.Message);
+            }
+        }
 
     }
 
