@@ -18,7 +18,7 @@ namespace QLNHANSU
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormBangCongChiTiet());
+            Application.Run(new MainForm());
         }
     }
 }

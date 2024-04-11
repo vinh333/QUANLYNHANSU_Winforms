@@ -195,14 +195,31 @@ namespace QLNHANSU
         {
             // Không cần xóa nội dung của textbox hay combobox, vì không có trường TENKC nữa
         }
-       
+
         private void btnXemBangCong_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            FormBangCongChiTiet frm = new FormBangCongChiTiet();
-           
-            frm.ShowDialog();
+            // Lấy dòng đang chọn từ gridView1
+            int rowIndex = gridView1.FocusedRowHandle;
+            if (rowIndex >= 0)
+            {
+                DataRow row = gridView1.GetDataRow(rowIndex);
+                int makycong = Convert.ToInt32(row["MAKYCONG"]);
+                int thang = Convert.ToInt32(row["THANG"]);
+                int nam = Convert.ToInt32(row["NAM"]);
 
-            
+                // Khởi tạo form FormBangCongChiTiet và truyền giá trị makycong qua constructor
+                FormBangCongChiTiet frm = new FormBangCongChiTiet(makycong,thang,nam);
+
+                // Hiển thị form
+                frm.ShowDialog();
+            }
+            else
+            {
+                // Hiển thị thông báo nếu không có dòng nào được chọn
+                MessageBox.Show("Vui lòng chọn một dòng để xem chi tiết.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
+
+
     }
 }
