@@ -64,8 +64,6 @@
             this.btnXoa = new DevExpress.XtraBars.BarButtonItem();
             this.btnLuu = new DevExpress.XtraBars.BarButtonItem();
             this.btnHuy = new DevExpress.XtraBars.BarButtonItem();
-            this.txt_timkiem = new DevExpress.XtraBars.BarEditItem();
-            this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.btnThoat = new DevExpress.XtraBars.BarButtonItem();
             this.btnIn = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
@@ -73,7 +71,11 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.txt_timkiem = new DevExpress.XtraBars.BarEditItem();
+            this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.txt_LuongCoBang = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -94,6 +96,8 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.txt_LuongCoBang);
+            this.splitContainer1.Panel1.Controls.Add(this.label12);
             this.splitContainer1.Panel1.Controls.Add(this.label11);
             this.splitContainer1.Panel1.Controls.Add(this.cbo_TonGiao);
             this.splitContainer1.Panel1.Controls.Add(this.label10);
@@ -122,7 +126,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.gridControl1);
-            this.splitContainer1.Size = new System.Drawing.Size(1165, 544);
+            this.splitContainer1.Size = new System.Drawing.Size(1321, 544);
             this.splitContainer1.SplitterDistance = 297;
             this.splitContainer1.TabIndex = 6;
             // 
@@ -141,9 +145,9 @@
             this.cbo_TonGiao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbo_TonGiao.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.cbo_TonGiao.FormattingEnabled = true;
-            this.cbo_TonGiao.Location = new System.Drawing.Point(1023, 30);
+            this.cbo_TonGiao.Location = new System.Drawing.Point(1073, 30);
             this.cbo_TonGiao.Name = "cbo_TonGiao";
-            this.cbo_TonGiao.Size = new System.Drawing.Size(130, 29);
+            this.cbo_TonGiao.Size = new System.Drawing.Size(205, 29);
             this.cbo_TonGiao.TabIndex = 22;
             // 
             // label10
@@ -368,7 +372,7 @@
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.MenuManager = this.barManager1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1165, 243);
+            this.gridControl1.Size = new System.Drawing.Size(1321, 243);
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -470,20 +474,6 @@
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnHuy_ItemClick);
             // 
-            // txt_timkiem
-            // 
-            this.txt_timkiem.Caption = "Tìm kiếm";
-            this.txt_timkiem.Edit = this.repositoryItemTextEdit1;
-            this.txt_timkiem.Id = 10;
-            this.txt_timkiem.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("txt_timkiem.ImageOptions.SvgImage")));
-            this.txt_timkiem.Name = "txt_timkiem";
-            this.txt_timkiem.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            // 
-            // repositoryItemTextEdit1
-            // 
-            this.repositoryItemTextEdit1.AutoHeight = false;
-            this.repositoryItemTextEdit1.Name = "repositoryItemTextEdit1";
-            // 
             // btnThoat
             // 
             this.btnThoat.Caption = "Thoát";
@@ -517,7 +507,7 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1165, 30);
+            this.barDockControlTop.Size = new System.Drawing.Size(1321, 30);
             // 
             // barDockControlBottom
             // 
@@ -525,7 +515,7 @@
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 574);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1165, 20);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1321, 20);
             // 
             // barDockControlLeft
             // 
@@ -539,9 +529,23 @@
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1165, 30);
+            this.barDockControlRight.Location = new System.Drawing.Point(1321, 30);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 544);
+            // 
+            // txt_timkiem
+            // 
+            this.txt_timkiem.Caption = "Tìm kiếm";
+            this.txt_timkiem.Edit = this.repositoryItemTextEdit1;
+            this.txt_timkiem.Id = 10;
+            this.txt_timkiem.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("txt_timkiem.ImageOptions.SvgImage")));
+            this.txt_timkiem.Name = "txt_timkiem";
+            this.txt_timkiem.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            // 
+            // repositoryItemTextEdit1
+            // 
+            this.repositoryItemTextEdit1.AutoHeight = false;
+            this.repositoryItemTextEdit1.Name = "repositoryItemTextEdit1";
             // 
             // barButtonItem1
             // 
@@ -551,11 +555,29 @@
             this.barButtonItem1.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem1.ImageOptions.SvgImage")));
             this.barButtonItem1.Name = "barButtonItem1";
             // 
+            // txt_LuongCoBang
+            // 
+            this.txt_LuongCoBang.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txt_LuongCoBang.Location = new System.Drawing.Point(1073, 69);
+            this.txt_LuongCoBang.Name = "txt_LuongCoBang";
+            this.txt_LuongCoBang.Size = new System.Drawing.Size(205, 27);
+            this.txt_LuongCoBang.TabIndex = 25;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label12.Location = new System.Drawing.Point(948, 70);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(119, 20);
+            this.label12.TabIndex = 24;
+            this.label12.Text = "Lương cơ bảng";
+            // 
             // FormNhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1165, 594);
+            this.ClientSize = new System.Drawing.Size(1321, 594);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
@@ -625,5 +647,7 @@
         private DevExpress.XtraBars.BarEditItem txt_timkiem;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private System.Windows.Forms.TextBox txt_LuongCoBang;
+        private System.Windows.Forms.Label label12;
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QLNHANSU.CHAMCONG;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -88,6 +89,11 @@ namespace QLNHANSU
         private void btnBangCong_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             openform(typeof(FormBangCong));
+        }
+
+        private void btnBangLuong_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            openform(typeof(FormBangLuong));
         }
     }
 }

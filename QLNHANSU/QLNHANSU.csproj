@@ -127,6 +127,12 @@
     <Compile Include="CHAMCONG\FormBangCong.Designer.cs">
       <DependentUpon>FormBangCong.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormBangLuong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormBangLuong.Designer.cs">
+      <DependentUpon>FormBangLuong.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormBoPhan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -204,6 +210,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CHAMCONG\FormBangCong.resx">
       <DependentUpon>FormBangCong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormBangLuong.resx">
+      <DependentUpon>FormBangLuong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormBoPhan.resx">
       <DependentUpon>FormBoPhan.cs</DependentUpon>

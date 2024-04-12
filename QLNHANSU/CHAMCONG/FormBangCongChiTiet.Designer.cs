@@ -31,9 +31,11 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormBangCongChiTiet));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.ckb_Trangthai = new System.Windows.Forms.CheckBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.cb_Thang = new System.Windows.Forms.ComboBox();
-            this.ckb_Khoa = new System.Windows.Forms.CheckBox();
             this.cb_Nam = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -92,18 +94,14 @@
             this.btnXemBangCong = new DevExpress.XtraBars.BarButtonItem();
             this.btnLuu = new DevExpress.XtraBars.BarButtonItem();
             this.btnHuy = new DevExpress.XtraBars.BarButtonItem();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -116,9 +114,7 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.groupBox1);
-            this.splitContainer1.Panel1.Controls.Add(this.ckb_Trangthai);
             this.splitContainer1.Panel1.Controls.Add(this.cb_Thang);
-            this.splitContainer1.Panel1.Controls.Add(this.ckb_Khoa);
             this.splitContainer1.Panel1.Controls.Add(this.cb_Nam);
             this.splitContainer1.Panel1.Controls.Add(this.label2);
             this.splitContainer1.Panel1.Controls.Add(this.label1);
@@ -130,16 +126,52 @@
             this.splitContainer1.SplitterDistance = 203;
             this.splitContainer1.TabIndex = 8;
             // 
-            // ckb_Trangthai
+            // groupBox1
             // 
-            this.ckb_Trangthai.AutoSize = true;
-            this.ckb_Trangthai.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.ckb_Trangthai.Location = new System.Drawing.Point(241, 93);
-            this.ckb_Trangthai.Name = "ckb_Trangthai";
-            this.ckb_Trangthai.Size = new System.Drawing.Size(108, 25);
-            this.ckb_Trangthai.TabIndex = 12;
-            this.ckb_Trangthai.Text = "Trạng thái";
-            this.ckb_Trangthai.UseVisualStyleBackColor = true;
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.groupBox1.ForeColor = System.Drawing.Color.OrangeRed;
+            this.groupBox1.Location = new System.Drawing.Point(257, 36);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(209, 136);
+            this.groupBox1.TabIndex = 13;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Chú thích:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label5.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.label5.Location = new System.Drawing.Point(27, 93);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(163, 18);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "KP: Văng không phép";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label4.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.label4.Location = new System.Drawing.Point(27, 64);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(125, 18);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "P: Văng có phép";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label3.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.label3.Location = new System.Drawing.Point(27, 35);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(77, 18);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "X: Có làm";
             // 
             // cb_Thang
             // 
@@ -162,26 +194,14 @@
             this.cb_Thang.Size = new System.Drawing.Size(121, 24);
             this.cb_Thang.TabIndex = 11;
             // 
-            // ckb_Khoa
-            // 
-            this.ckb_Khoa.AutoSize = true;
-            this.ckb_Khoa.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.ckb_Khoa.Location = new System.Drawing.Point(241, 48);
-            this.ckb_Khoa.Name = "ckb_Khoa";
-            this.ckb_Khoa.Size = new System.Drawing.Size(69, 25);
-            this.ckb_Khoa.TabIndex = 10;
-            this.ckb_Khoa.Text = "Khoá";
-            this.ckb_Khoa.UseVisualStyleBackColor = true;
-            // 
             // cb_Nam
             // 
             this.cb_Nam.FormattingEnabled = true;
             this.cb_Nam.Items.AddRange(new object[] {
-            "2022",
-            "2023",
             "2024",
             "2025",
-            "2026"});
+            "2026",
+            "2027"});
             this.cb_Nam.Location = new System.Drawing.Point(92, 50);
             this.cb_Nam.Name = "cb_Nam";
             this.cb_Nam.Size = new System.Drawing.Size(121, 24);
@@ -992,53 +1012,6 @@
             this.btnHuy.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnHuy.ImageOptions.SvgImage")));
             this.btnHuy.Name = "btnHuy";
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.groupBox1.ForeColor = System.Drawing.Color.OrangeRed;
-            this.groupBox1.Location = new System.Drawing.Point(374, 29);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(209, 136);
-            this.groupBox1.TabIndex = 13;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Chú thích:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label3.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.label3.Location = new System.Drawing.Point(27, 35);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(77, 18);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "X: Có làm";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label4.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.label4.Location = new System.Drawing.Point(27, 64);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(125, 18);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "V: Văng có phép";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label5.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.label5.Location = new System.Drawing.Point(27, 93);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(163, 18);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "KP: Văng không phép";
-            // 
             // FormBangCongChiTiet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -1058,11 +1031,11 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1089,8 +1062,6 @@
         private System.Windows.Forms.ComboBox cb_Nam;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.CheckBox ckb_Trangthai;
-        private System.Windows.Forms.CheckBox ckb_Khoa;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridView gridView1;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colMaNV;

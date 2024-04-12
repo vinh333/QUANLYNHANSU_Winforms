@@ -95,7 +95,7 @@ namespace QLNHANSU
         {
             try
             {
-                string query = "SELECT nv.MANV, nv.HOTEN, nv.GIOITINH, nv.NGAYSINH,nv.CCCD, nv.DIENTHOAI, nv.DIACHI, nv.HINHANH, bp.TENBP, cv.TENCV, dt.TENDANTOC, tg.TENTONGIAO, pb.TENPB, td.TENTD FROM nhanvien nv LEFT JOIN bophan bp ON nv.IDBP = bp.IDBP LEFT JOIN chucvu cv ON nv.IDCV = cv.IDCV LEFT JOIN dantoc dt ON nv.IDDT = dt.IDDT LEFT JOIN tongiao tg ON nv.IDTG = tg.IDTG LEFT JOIN phongban pb ON nv.IDPB = pb.IDPB LEFT JOIN trinhdo td ON nv.IDTD = td.IDTD WHERE 1;";
+                string query = "SELECT nv.MANV, nv.HOTEN, nv.GIOITINH, nv.NGAYSINH, nv.CCCD, nv.DIENTHOAI, nv.DIACHI, nv.HINHANH, CAST(nv.LUONGCOBAN AS CHAR) AS LUONGCOBAN, bp.TENBP, cv.TENCV, dt.TENDANTOC, tg.TENTONGIAO, pb.TENPB, td.TENTD FROM nhanvien nv LEFT JOIN bophan bp ON nv.IDBP = bp.IDBP LEFT JOIN chucvu cv ON nv.IDCV = cv.IDCV LEFT JOIN dantoc dt ON nv.IDDT = dt.IDDT LEFT JOIN tongiao tg ON nv.IDTG = tg.IDTG LEFT JOIN phongban pb ON nv.IDPB = pb.IDPB LEFT JOIN trinhdo td ON nv.IDTD = td.IDTD WHERE 1;";
                 DataTable dataTable = mySQLConnector.Select(query);
                 gridControl1.DataSource = dataTable;
             }
@@ -104,6 +104,8 @@ namespace QLNHANSU
                 MessageBox.Show("Lỗi load dữ liệu: " + ex.Message);
             }
         }
+
+
 
         private void _showHide(bool kt)
         {
@@ -153,6 +155,8 @@ namespace QLNHANSU
             string idTonGiao = row["TENTONGIAO"].ToString(); // Lấy ID tôn giáo
             string idTrinhDo = row["TENTD"].ToString(); // Lấy ID trình độ
 
+            float luongcoban = Convert.ToSingle(row["LUONGCOBAN"]);
+
             txtHoTen.Text = hoTen;
             chkGioiTinh.Checked = gioiTinh == "True";
             dtpNgaySinh.Value = ngaySinh;
@@ -160,8 +164,9 @@ namespace QLNHANSU
             txtCCCD.Text = cccd;
             txt_DiaChi.Text = diaChi;
 
+            txt_LuongCoBang.Text = luongcoban.ToString();
             // Chọn các ComboBox tương ứng với ID
-           
+
             SelectComboBoxItem(cbo_BoPhan, idBoPhan);
             SelectComboBoxItem(cbo_ChucVu, idChucVu);
             SelectComboBoxItem(cbo_DanToc, idDanToc);
@@ -220,11 +225,13 @@ namespace QLNHANSU
                 int idTonGiao = GetIDByTen(cbo_TonGiao.SelectedItem.ToString(), "tongiao", "TENTONGIAO", "IDTG");
                 int idTrinhDo = GetIDByTen(cbo_TrinhDo.SelectedItem.ToString(), "trinhdo", "TENTD", "IDTD");
 
+                string luongCoBan = txt_LuongCoBang.Text.Trim();
+
                 if (checkbutton)
                 {
                     // Thêm mới
-                    string query = $"INSERT INTO nhanvien (HOTEN, GIOITINH, NGAYSINH, DIENTHOAI, CCCD, DIACHI, HINHANH, IDBP, IDCV, IDDT, IDPB, IDTG, IDTD) " +
-                                   $"VALUES ('{hoTen}', {gioiTinh}, '{ngaySinh.ToString("yyyy-MM-dd")}', '{sdt}', '{cccd}', '{diaChi}', {hinhAnh}, " +
+                    string query = $"INSERT INTO nhanvien (HOTEN, GIOITINH, NGAYSINH, DIENTHOAI, CCCD, DIACHI, HINHANH, LUONGCOBAN, IDBP, IDCV, IDDT, IDPB, IDTG, IDTD) " +
+                                   $"VALUES ('{hoTen}', {gioiTinh}, '{ngaySinh.ToString("yyyy-MM-dd")}', '{sdt}', '{cccd}', '{diaChi}', {hinhAnh}, {luongCoBan}, " +
                                    $"{idBoPhan}, {idChucVu}, {idDanToc}, {idPhongBan}, {idTonGiao}, {idTrinhDo})";
                     mySQLConnector.ExecuteQuery(query);
                 }
@@ -234,8 +241,8 @@ namespace QLNHANSU
                     DataRow row = gridView1.GetDataRow(rowIndex);
                     int maNV = Convert.ToInt32(row["MANV"]);
                     string query = $"UPDATE nhanvien SET HOTEN = '{hoTen}', GIOITINH = {gioiTinh}, NGAYSINH = '{ngaySinh.ToString("yyyy-MM-dd")}', " +
-                                   $"DIENTHOAI = '{sdt}', CCCD = '{cccd}', DIACHI = '{diaChi}', HINHANH = {hinhAnh}, IDBP = {idBoPhan}, IDCV = {idChucVu}, " +
-                                   $"IDDT = {idDanToc}, IDPB = {idPhongBan}, IDTG = {idTonGiao}, IDTD = {idTrinhDo} WHERE MANV = {maNV}";
+                                   $"DIENTHOAI = '{sdt}', CCCD = '{cccd}', DIACHI = '{diaChi}', HINHANH = {hinhAnh}, LUONGCOBAN = {luongCoBan}, " +
+                                   $"IDBP = {idBoPhan}, IDCV = {idChucVu}, IDDT = {idDanToc}, IDPB = {idPhongBan}, IDTG = {idTonGiao}, IDTD = {idTrinhDo} WHERE MANV = {maNV}";
                     mySQLConnector.ExecuteQuery(query);
                 }
 

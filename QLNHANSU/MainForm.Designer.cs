@@ -260,6 +260,7 @@
             this.btnBangLuong.Id = 18;
             this.btnBangLuong.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnBangLuong.ImageOptions.SvgImage")));
             this.btnBangLuong.Name = "btnBangLuong";
+            this.btnBangLuong.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBangLuong_ItemClick);
             // 
             // barButtonItem22
             // 
